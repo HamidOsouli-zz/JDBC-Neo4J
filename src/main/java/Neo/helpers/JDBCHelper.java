@@ -17,7 +17,6 @@ public class JDBCHelper
       }
       catch ( ClassNotFoundException e )
       {
-         e.printStackTrace();
          System.out.println( "Driver class not found" );
       }
    }

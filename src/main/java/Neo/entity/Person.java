@@ -18,22 +18,21 @@ public class Person
       this.firstName = firstName;
       this.lastName = lastName;
       this.email = email;
-
    }
 
    public long getUId()
    {
-      return uid;
+      return this.uid;
    }
 
-   public void setId( long uid )
+   public void setUId( long uid )
    {
       this.uid = uid;
    }
 
    public String getFirstName()
    {
-      return firstName;
+      return this.firstName;
    }
 
    public void setFirstName( String firstName )
@@ -43,7 +42,7 @@ public class Person
 
    public String getLastName()
    {
-      return lastName;
+      return this.lastName;
    }
 
    public void setLastName( String lastName )
@@ -53,7 +52,7 @@ public class Person
 
    public String getEmail()
    {
-      return email;
+      return this.email;
    }
 
    public void setEmail( String email )
@@ -64,7 +63,6 @@ public class Person
    @Override
    public String toString()
    {
-      return "Person [id=" + uid + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "]";
+      return "Person [uid = " + uid + ", firstName = " + firstName + ", lastName = " + lastName + ", email = " + email + "]";
    }
-
 }
