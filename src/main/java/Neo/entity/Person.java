@@ -1,18 +1,21 @@
 package Neo.entity;
 
+
 public class Person
 {
-   private long uid;
+   private int uid;
    private String firstName;
    private String lastName;
    private String email;
+   private long created;
+   private long edited;
 
    public Person()
    {
 
    }
 
-   public Person( long uid, String firstName, String lastName, String email )
+   public Person(int uid, String firstName, String lastName, String email)
    {
       this.uid = uid;
       this.firstName = firstName;
@@ -20,12 +23,12 @@ public class Person
       this.email = email;
    }
 
-   public long getUId()
+   public int getUId()
    {
       return this.uid;
    }
 
-   public void setUId( long uid )
+   public void setUId( int uid )
    {
       this.uid = uid;
    }
@@ -60,9 +63,29 @@ public class Person
       this.email = email;
    }
 
+   public long getCreated()
+   {
+      return this.created;
+   }
+
+   public void setCreated( long created )
+   {
+      this.created = created;
+   }
+
+   public long getEdited()
+   {
+      return this.edited;
+   }
+
+   public void setEdited( long edited )
+   {
+      this.edited = edited;
+   }
+
    @Override
    public String toString()
    {
-      return "Person [uid = " + uid + ", firstName = " + firstName + ", lastName = " + lastName + ", email = " + email + "]";
+      return "Person [uid = " + uid + ", firstName = " + firstName + ", lastName = " + lastName + ", email = " + email + ", created = " + created + ", edited = " + edited + "]";
    }
 }

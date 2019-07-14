@@ -8,13 +8,13 @@ import java.util.List;
 public interface PersonDI {
     void deleteAll() throws SQLException;
 
-    void delete( long uid ) throws SQLException;
+    void delete( int uid ) throws SQLException;
 
     List<Person> getAll() throws SQLException;
 
-    Person get( long uid ) throws SQLException;
+    Person get( int uid ) throws SQLException;
 
-    void update( long uid, Person person ) throws SQLException;
+    void update( int uid, Person person ) throws SQLException;
 
     void create( Person p ) throws SQLException;
 

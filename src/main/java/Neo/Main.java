@@ -1,49 +1,47 @@
 package Neo;
-
-import Neo.dao.PersonDaoImpl;
-import Neo.entity.Person;
-
 import java.sql.SQLException;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import Neo.entity.Person;
+import Neo.services.PersonService;
 
 public class Main {
+    static Logger logger = LoggerFactory.getLogger(Main.class);
     public static void main(String[] args) {
+
         try
         {
-            PersonDaoImpl personDao = new PersonDaoImpl();
-            Person person1 = new Person(1, "Hamid", "Osouli", "hamid.com" );
-            Person person2 = new Person(54, "Arian", "Rahmani", "arian.com");
-            // Create
-            personDao.create( person1 );
-            personDao.create( person2 );
+            Person person1 = PersonService.create(65, "hamid", "osouli", "hamid@gmail.com");
+            Person person2 = PersonService.create(66, "Arian", "rahmani", "rahmani@gmail.com");
             // get single
-            System.out.println(personDao.get(person1.getUId()));
-            System.out.println(personDao.get(person2.getUId()));
+
             // add person1 and person2 as a Colleague
-            personDao.addAsColleague(person1, person2);
+            PersonService.addAsColleague(person1, person2);
             // getAll
-            List<Person> persons = personDao.getAll();
-            for ( Person p : persons )
+            List<Person> persons = PersonService.getAll();
+            for (Person p : persons)
             {
-                System.out.println( p );
+                logger.info(p.toString());
             }
             // update
             Person editedPerson = person1;
             editedPerson.setFirstName("Hamidreza");
-            personDao.update(person1.getUId(), editedPerson);
-            System.out.println(personDao.get(person1.getUId()));
+            editedPerson = PersonService.update(person1.getUId(), editedPerson);
+            logger.info(editedPerson.toString());
+            logger.info(PersonService.get(person1.getUId()).toString());
             // single delete
-            personDao.delete(person1.getUId());
+            PersonService.delete(person1);
             // delete all
-            personDao.deleteAll();
+            PersonService.deleteAll();
         }
         catch ( SQLException e )
         {
-            System.out.println( "Exception occured " + e.getMessage() );
+            logger.error(e.getMessage());
         }
         catch ( Exception e )
         {
-            System.out.println( "Exception occured " + e.getMessage() );
+            logger.error(e.getMessage());
         }
     }
 }
