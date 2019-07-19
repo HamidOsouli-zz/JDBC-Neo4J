@@ -18,7 +18,11 @@ public class PropertiesHelper {
 
     public static PropertiesHelper getInstance() {
         if (instance == null) {
-            instance = new PropertiesHelper();
+            synchronized (PropertiesHelper.class) {
+                if (instance == null) {
+                    instance = new PropertiesHelper();
+                }
+            }
         }
         return instance;
     }

@@ -18,7 +18,11 @@ public class DatabaseHelper
 
    public static DatabaseHelper getInstance() {
       if (instance == null) {
-         instance = new DatabaseHelper();
+         synchronized (DatabaseHelper.class) {
+            if (instance == null) {
+               instance = new DatabaseHelper();
+            }
+         }
       }
       return instance;
    }
