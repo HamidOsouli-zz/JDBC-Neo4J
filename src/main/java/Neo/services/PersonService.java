@@ -1,5 +1,6 @@
 package Neo.services;
 
+import Neo.dao.person.PersonDao;
 import Neo.dao.person.PersonDaoImpl;
 import Neo.dto.person.PersonDto;
 import Neo.entity.Person;
@@ -11,7 +12,7 @@ import java.util.List;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class PersonService {
-    private PersonDaoImpl personDaoImpl = new PersonDaoImpl();
+    private PersonDao personDaoImpl = new PersonDaoImpl();
     private ObjectMapper mapper = new ObjectMapper();
 
     public PersonDto create(PersonDto personDto) {
@@ -61,10 +62,10 @@ public class PersonService {
         personDaoImpl.deleteAll();
     }
 
-    public void setPersonDaoImpl(PersonDaoImpl personDaoImpl) {
+    public void setPersonDaoImpl(PersonDao personDaoImpl) {
         this.personDaoImpl = personDaoImpl;
     }
-    public PersonDaoImpl getPersonDaoImpl() {
+    public PersonDao getPersonDaoImpl() {
         return this.personDaoImpl;
     }
     public void setObjectMapper(ObjectMapper mapper) {
