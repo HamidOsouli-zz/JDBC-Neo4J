@@ -4,7 +4,7 @@ import Neo.dao.person.PersonDaoImpl;
 import Neo.dto.person.PersonDto;
 import Neo.entity.Person;
 
-import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -31,13 +31,12 @@ public class PersonService {
 
     public List<PersonDto> getAll() {
         List<Person> persons = personDaoImpl.getAll();
-        try {
-            String personJsonArray = mapper.writeValueAsString(persons);
-            return mapper.readValue(personJsonArray, mapper.getTypeFactory().constructCollectionType(List.class, PersonDto.class));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        List<PersonDto> personDtos = new ArrayList<>();
+        for (Person person : persons) {
+            PersonDto personDto = mapper.convertValue(person, PersonDto.class);
+            personDtos.add(personDto);
         }
-
+        return personDtos;
     }
 
     public PersonDto update(PersonDto personDto) {
@@ -60,5 +59,18 @@ public class PersonService {
 
     public void deleteAll() {
         personDaoImpl.deleteAll();
+    }
+
+    public void setPersonDaoImpl(PersonDaoImpl personDaoImpl) {
+        this.personDaoImpl = personDaoImpl;
+    }
+    public PersonDaoImpl getPersonDaoImpl() {
+        return this.personDaoImpl;
+    }
+    public void setObjectMapper(ObjectMapper mapper) {
+        this.mapper = mapper;
+    }
+    public ObjectMapper getObjectMapper() {
+        return this.mapper;
     }
 }
