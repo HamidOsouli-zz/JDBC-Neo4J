@@ -17,7 +17,7 @@ public class Main {
             System.out.println("Please Enter how many you want to create: ");
             Scanner scanner = new Scanner(System.in);
             String maxUser = scanner.nextLine();
-            if ((Integer.parseInt(maxUser) <= Integer.parseInt(propertiesHelper.getProperty("MAX_USER_CREATE"))) && Integer.parseInt(maxUser) > 0) {
+            if (isParsableToInt(maxUser)) {
                 isValid = true;
                 PersonService personService = new PersonService();
                 for (int i = 0; i < Integer.parseInt(maxUser); i++) {
@@ -49,5 +49,13 @@ public class Main {
                 System.out.println("try again");
             }
         }
+    }
+    public static boolean isParsableToInt(String input) {
+        try {
+            Integer.parseInt(input);
+        } catch(NumberFormatException | NullPointerException e) {
+            return false;
+        }
+        return true;
     }
 }
