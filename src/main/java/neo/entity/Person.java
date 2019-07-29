@@ -1,36 +1,38 @@
-package Neo.entity;
+package neo.entity;
+
+import org.neo4j.ogm.annotation.*;
 
 
+@NodeEntity
 public class Person
 {
-   private int uid;
+   @Id
+   @GeneratedValue
+   private Long id;
    private String firstName;
    private String lastName;
    private String email;
    private long created;
    private long edited;
 
+//   @Relationship(type = "HAS_COLLEAGUES")
+//   private List<Person> colleagues = new ArrayList<>();
+
    public Person()
    {
 
    }
 
-   public Person(int uid, String firstName, String lastName, String email)
+   public Person(String firstName, String lastName, String email)
    {
-      this.uid = uid;
       this.firstName = firstName;
       this.lastName = lastName;
       this.email = email;
    }
 
-   public int getUId()
+   public Long getId()
    {
-      return this.uid;
-   }
-
-   public void setUId( int uid )
-   {
-      this.uid = uid;
+      return this.id;
    }
 
    public String getFirstName()
@@ -83,9 +85,13 @@ public class Person
       this.edited = edited;
    }
 
+//   public List<Person> getColleague() {
+//      return this.colleagues;
+//   }
+
    @Override
    public String toString()
    {
-      return "Person [uid = " + uid + ", firstName = " + firstName + ", lastName = " + lastName + ", email = " + email + ", created = " + created + ", edited = " + edited + "]";
+      return "Person [id = " + id + ", firstName = " + firstName + ", lastName = " + lastName + ", email = " + email + ", created = " + created + ", edited = " + edited + "]";
    }
 }

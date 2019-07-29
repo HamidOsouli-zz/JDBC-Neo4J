@@ -1,9 +1,9 @@
-package Neo.dto.person;
+package neo.dto.person;
 
 
 public class PersonDto
 {
-    private int uid;
+    private Long id;
     private String firstName;
     private String lastName;
     private String email;
@@ -15,22 +15,16 @@ public class PersonDto
 
     }
 
-    public PersonDto(int uid, String firstName, String lastName, String email)
+    public PersonDto(String firstName, String lastName, String email)
     {
-        this.uid = uid;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
     }
 
-    public int getUId()
+    public Long getId()
     {
-        return this.uid;
-    }
-
-    public void setUId( int uid )
-    {
-        this.uid = uid;
+        return this.id;
     }
 
     public String getFirstName()
@@ -86,6 +80,6 @@ public class PersonDto
     @Override
     public String toString()
     {
-        return "PersonDto [uid = " + uid + ", firstName = " + firstName + ", lastName = " + lastName + ", email = " + email + ", created = " + created + ", edited = " + edited + "]";
+        return "PersonDto [id = " + id + ", firstName = " + firstName + ", lastName = " + lastName + ", email = " + email + ", created = " + created + ", edited = " + edited + "]";
     }
 }
